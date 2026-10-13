@@ -1,0 +1,629 @@
+/* ==========================================================================
+   MAGOLA CREATIVA | Personal portfolio
+   Pure CSS, mobile-first. Structure:
+   1. Design tokens (CSS variables)
+   2. Reset and base
+   3. Layout helpers
+   4. Header and navigation
+   5. Hero
+   6. Shared section styles
+   7. About
+   8. Services
+   9. Portfolio
+   10. Footer
+   11. Larger screens (media queries)
+   12. Accessibility preferences
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. DESIGN TOKENS
+   ========================================================================== */
+:root {
+  /* Typography */
+  --font-main: 'Quicksand', sans-serif;
+
+  /* Base colors */
+  --color-bg: #FAFAFA;           /* Main background: very light grey/cream */
+  --color-text: #1C1C1E;         /* Main text: deep charcoal */
+  --color-text-soft: #4A4A4F;    /* Secondary text, still AA contrast on the background */
+  --color-line: #E4E4E7;         /* Subtle borders */
+
+  /* Accent colors */
+  --color-mint-soft: #D1EFBD;
+  --color-mint-vivid: #89D385;
+  --color-sky: #6CD1F0;
+  --color-lilac: #A1A1F7;
+  --color-pink: #EFCCEA;
+
+  /* Soft tints of the accents, used as gentle card backgrounds */
+  --tint-mint-soft: rgba(209, 239, 189, 0.45);
+  --tint-mint-vivid: rgba(137, 211, 133, 0.22);
+  --tint-sky: rgba(108, 209, 240, 0.20);
+  --tint-lilac: rgba(161, 161, 247, 0.20);
+  --tint-pink: rgba(239, 204, 234, 0.45);
+
+  /* Type scale (fluid) */
+  --text-base: 1.0625rem;
+  --text-small: 0.9375rem;
+  --text-lg: clamp(1.125rem, 1rem + 0.6vw, 1.3125rem);
+  --text-h3: clamp(1.25rem, 1.1rem + 0.7vw, 1.5rem);
+  --text-h2: clamp(1.75rem, 1.4rem + 1.6vw, 2.5rem);
+  --text-h1: clamp(2.25rem, 1.5rem + 3.6vw, 4rem);
+
+  /* Spacing scale */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: 6rem;
+
+  /* Radii: small for chips/buttons, larger for cards */
+  --radius-pill: 999px;
+  --radius-card: 1.5rem;
+  --radius-soft: 1rem;
+
+  /* Layout */
+  --container-width: 68rem;
+  --header-height: 4rem;
+}
+
+
+/* ==========================================================================
+   2. RESET AND BASE
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Keeps anchored sections from hiding under the sticky header */
+  scroll-padding-top: calc(var(--header-height) + 1rem);
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-main);
+  font-size: var(--text-base);
+  font-weight: 500;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, p, ul {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+}
+
+/* Visible keyboard focus for every interactive element */
+:focus-visible {
+  outline: 3px solid var(--color-lilac);
+  outline-offset: 3px;
+  border-radius: 0.25rem;
+}
+
+
+/* ==========================================================================
+   3. LAYOUT HELPERS
+   ========================================================================== */
+
+/* Centered content wrapper with side gutters */
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin-inline: auto;
+  padding-inline: var(--space-md);
+}
+
+/* Skip link: only visible when focused with the keyboard */
+.skip-link {
+  position: absolute;
+  top: -4rem;
+  left: var(--space-sm);
+  z-index: 20;
+  padding: var(--space-xs) var(--space-sm);
+  background-color: var(--color-text);
+  color: var(--color-bg);
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: var(--space-xs);
+}
+
+/* Shared button style */
+.button {
+  display: inline-block;
+  padding: 0.85rem 1.75rem;
+  background-color: var(--color-mint-vivid);
+  color: var(--color-text);
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: var(--radius-pill);
+  transition: background-color 0.2s ease;
+}
+
+.button:hover {
+  background-color: var(--color-mint-soft);
+}
+
+
+/* ==========================================================================
+   4. HEADER AND NAVIGATION
+   ========================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: rgba(250, 250, 250, 0.92);
+  border-bottom: 1px solid var(--color-line);
+  backdrop-filter: blur(8px);
+}
+
+/* Mobile-first: logo above the links, which can wrap */
+.site-header__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding-block: 0.75rem;
+}
+
+.site-header__logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.site-nav__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem 1.25rem;
+}
+
+.site-nav__list a {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  font-size: var(--text-small);
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: var(--radius-pill);
+  transition: background-color 0.2s ease;
+}
+
+.site-nav__list a:hover {
+  background-color: var(--color-mint-soft);
+}
+
+
+/* ==========================================================================
+   5. HERO
+   ========================================================================== */
+.hero {
+  display: grid;
+  gap: var(--space-xl);
+  padding-block: var(--space-xl) var(--space-2xl);
+}
+
+.hero__title {
+  max-width: 16ch;
+  font-size: var(--text-h1);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.hero__subtitle {
+  max-width: 36rem;
+  margin-block: var(--space-md) var(--space-lg);
+  font-size: var(--text-lg);
+  color: var(--color-text-soft);
+}
+
+.hero__img {
+  max-width: 800px; /* Ajusta este número (en px, rem o %) al tamaño que prefieras */
+  width: 100%;      /* Asegura que no se desborde en pantallas pequeñas */
+  height: auto;     /* Mantiene la proporción de la imagen para que no se deforme */
+  
+}
+
+/* ==========================================================================
+   6. SHARED SECTION STYLES
+   ========================================================================== */
+.section {
+  padding-block: var(--space-xl);
+}
+
+.section__title {
+  font-size: var(--text-h2);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.section__intro {
+  max-width: 36rem;
+  margin-top: var(--space-sm);
+  color: var(--color-text-soft);
+}
+
+.studies-skills {
+  display: grid;
+  gap: var(--space-lg);
+  background-color: var(--color-bg); /* Fondo limpio */
+  padding: var(--space-lg);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+}
+
+.studies-skills p {
+  color: var(--color-text-soft);
+}
+
+.software-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.software-icon {
+  width: 35px;  /* Iconos pequeños como pediste */
+  height: 35px;
+  object-fit: contain;
+  border-radius: 6px; /* Suaviza los bordes de los iconos cuadrados */
+  transition: transform 0.2s ease;
+}
+
+.software-icon:hover {
+  transform: translateY(-3px); /* Efecto de saltito al pasar el mouse */
+}
+
+
+/* ==========================================================================
+   7. ABOUT
+   ========================================================================== */
+.about {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.about__body {
+  display: grid;
+  gap: var(--space-sm);
+  max-width: 40rem;
+}
+
+/* Estilos básicos de la foto */
+.about__img {
+  width: 100%;
+  max-width: 320px;
+  border-radius: var(--radius-card); /* Mantiene tu estilo de bordes curvos */
+}
+
+/* Pantallas grandes (Computadoras y Tablets grandes) */
+@media (min-width: 64rem) {
+  .about__img {
+    grid-column: 1; /* Mantiene la foto en la columna izquierda */
+    grid-row: 2;    /* La ubica en la fila de abajo del título */
+  }
+  
+  .about__right {
+    grid-column: 2; /* Todo el paquete va a la columna derecha */
+    grid-row: 1 / span 2; /* Le decimos que ocupe el mismo alto del título + la foto */
+    align-self: center; /* ¡Esto es lo que centra el bloque horizontalmente con la foto! */
+  }
+  
+  .about .chips {
+    grid-column: auto; /* Resetea la posición original de los chips */
+    margin-top: var(--space-md); /* Añade un espacio estético entre el texto y los chips */
+  }
+}
+
+/* Skill chips */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: var(--space-xs);
+}
+
+.chip {
+  padding: 0.4rem 1.1rem;
+  font-size: var(--text-small);
+  font-weight: 600;
+  border-radius: var(--radius-pill);
+  transition: transform 0.2s ease;
+}
+
+.chip:hover {
+  transform: translateY(-2px);
+}
+
+.chip--mint-soft  { background-color: var(--color-mint-soft); }
+.chip--sky        { background-color: var(--color-sky); }
+.chip--lilac      { background-color: var(--color-lilac); }
+.chip--pink       { background-color: var(--color-pink); }
+.chip--mint-vivid { background-color: var(--color-mint-vivid); }
+
+
+/* ==========================================================================
+   8. SERVICES
+   ========================================================================== */
+.services {
+  display: grid;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.service {
+  display: grid;
+  align-content: start;
+  gap: var(--space-xs);
+  padding: var(--space-md);
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-line);
+  /* Thick accent edge on top identifies each service */
+  border-top-width: 6px;
+  border-radius: var(--radius-card);
+  transition: background-color 0.2s ease;
+}
+
+.service__title {
+  font-size: var(--text-h3);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.service p {
+  color: var(--color-text-soft);
+}
+
+.service--sky        { border-top-color: var(--color-sky); }
+.service--lilac      { border-top-color: var(--color-lilac); }
+.service--mint-vivid { border-top-color: var(--color-mint-vivid); }
+
+.service--sky:hover        { background-color: var(--tint-sky); }
+.service--lilac:hover      { background-color: var(--tint-lilac); }
+.service--mint-vivid:hover { background-color: var(--tint-mint-vivid); }
+
+
+/* ==========================================================================
+   9. PORTFOLIO
+   ========================================================================== */
+
+/* Behind-the-scenes note: dashed border echoes a sketch/draft */
+.backstage {
+  max-width: 40rem;
+  margin-top: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  border: 2px dashed var(--color-lilac);
+  border-radius: var(--radius-soft);
+}
+
+.portfolio-grid {
+  display: grid;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.case {
+  display: grid;
+  align-content: start;
+  gap: var(--space-xs);
+  padding: var(--space-md);
+  border: 2px solid transparent;
+  border-radius: var(--radius-card);
+  transition: border-color 0.2s ease;
+}
+
+.case__title {
+  font-size: var(--text-h3);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.case__type {
+  font-weight: 700;
+}
+
+.case__text {
+  color: var(--color-text-soft);
+}
+
+/* Each case study uses one soft accent background; hover reveals the full accent */
+.case--pink      { background-color: var(--tint-pink); }
+.case--lilac     { background-color: var(--tint-lilac); }
+.case--sky       { background-color: var(--tint-sky); }
+.case--mint-soft { background-color: var(--tint-mint-soft); }
+
+.case--pink:hover      { border-color: var(--color-pink); }
+.case--lilac:hover     { border-color: var(--color-lilac); }
+.case--sky:hover       { border-color: var(--color-sky); }
+.case--mint-soft:hover { border-color: var(--color-mint-vivid); }
+
+
+/* ==========================================================================
+   10. FOOTER
+   ========================================================================== */
+.site-footer {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-sm);
+  background-color: #EFCCEA; 
+  border-top: 1px solid var(--color-line);
+}
+
+.site-footer__inner {
+  display: grid;
+  gap: var(--space-lg);
+  text-align: center; /* Todo centrado por defecto en celulares */
+}
+
+.footer-col h3 {
+  font-size: var(--text-base);
+  font-weight: 700;
+  margin-bottom: var(--space-xs);
+}
+
+.footer-col p {
+  color: var(--color-text-soft);
+  font-size: var(--text-small);
+  line-height: 1.5;
+}
+
+.footer-col a {
+  color: var(--color-text-soft);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-col a:hover {
+  color: var(--color-text);
+}
+
+/* Botones del footer */
+.footer-socials {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.button--small {
+  padding: 0.4rem 1.2rem;
+  font-size: var(--text-small);
+  background-color: #D1EFBD;
+  color: var(--color-bg);
+  border-radius: var(--radius-pill);
+  width: fit-content;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.button--small:hover {
+  background-color: #89D385;
+  color: #FFFFFF;
+}
+
+.site-footer__bottom {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(0,0,0,0.05);
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--color-text-soft);
+}
+
+/* ==========================================================================
+   11. LARGER SCREENS (Ajustes para PC del footer y estudios)
+   ========================================================================== */
+@media (min-width: 48rem) {
+  /* Estudios a 2 columnas */
+  .studies-skills {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+  }
+
+  /* Footer a 3 columnas estilo referencia */
+  .site-footer__inner {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+
+/* ==========================================================================
+   11. LARGER SCREENS
+   ========================================================================== */
+
+/* Tablet and up */
+@media (min-width: 48rem) {
+  :root {
+    --header-height: 4.5rem;
+  }
+
+  .container {
+    padding-inline: var(--space-lg);
+  }
+
+  /* Logo on the left, links on the right */
+  .site-header__inner {
+    flex-direction: row;
+    justify-content: space-between;
+    padding-block: 1rem;
+  }
+
+  .site-nav__list {
+    gap: 0.25rem 1rem;
+  }
+
+  .services {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .case {
+    padding: var(--space-lg);
+  }
+}
+
+/* Desktop */
+@media (min-width: 64rem) {
+  /* Hero: text on the left, artwork on the right */
+  .hero {
+    grid-template-columns: 1.2fr 1fr;
+    align-items: center;
+    padding-block: var(--space-2xl);
+  }
+
+  .hero__art {
+    min-height: 28rem;
+  }
+
+  /* About: title column + body column */
+  .about {
+    grid-template-columns: 1fr 2fr;
+    column-gap: var(--space-xl);
+    align-items: start;
+  }
+
+  .about .chips {
+    grid-column: 2;
+  }
+}
+
+
+/* ==========================================================================
+   12. ACCESSIBILITY PREFERENCES
+   ========================================================================== */
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    transition: none !important;
+  }
+}

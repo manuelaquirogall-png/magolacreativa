@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Basic document setup -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Magola Creativa | Branding y diseño para pequeños emprendimientos</title>
+  <link rel="icon" type="image/png" href="./landing-page-imagenes/logo-magolacreativa.png">
+  <meta name="description" content="Portafolio de Magola Creativa: estrategia, naming, identidad visual y diseño web para pequeños emprendimientos que buscan honestidad visual.">
+
+  <!-- Google Fonts: Quicksand (main typeface) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Skip link: lets keyboard users jump straight to the content -->
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- ============================================================
+       HEADER + STICKY NAVIGATION
+       ============================================================ -->
+  <header class="site-header">
+    <div class="site-header__inner container">
+      <a class="site-header__logo" href="#inicio" aria-label="Magola Creativa, ir al inicio">Magola Creativa</a>
+
+      <nav class="site-nav" aria-label="Navegación principal">
+        <ul class="site-nav__list">
+          <li><a href="#sobre-mi">Sobre mí</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#portafolio">Portafolio</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+
+    <!-- ============================================================
+         HERO
+         ============================================================ -->
+    <section class="hero container" id="inicio" aria-labelledby="hero-title">
+        <div class="hero__text">
+        <h1 class="hero__title" id="hero-title">Ayudo a pequeños emprendimientos a empezar con el pie derecho.</h1>
+        <p class="hero__subtitle">Uniendo estrategia, presupuestos claros y diseño creativo para marcas que buscan honestidad visual.</p>
+        <a class="button" href="https://api.whatsapp.com/send?phone=+573052670225&text=Hola!%20Vi%20tu%20portafolio%20y%20quisiera%20trabajar%20contigo%20%F0%9F%98%8A" target="_blank" rel="noopener noreferrer">Hablemos</a>
+      </div>
+
+      <!-- Decorative "ordered chaos" artwork: purely visual, hidden from assistive tech -->
+      <div class="hero__art" aria-hidden="true">
+  <img src="./socialmediaimagenes/foto-inicio.png" class="hero__img" alt="">
+</div>
+    </section>
+
+    <!-- ============================================================
+         ABOUT
+         ============================================================ -->
+
+    <section class="section container" id="estudios">
+      <div class="studies-skills">
+        
+        <!-- Columna de Estudios -->
+        <div class="studies">
+          <h2 class="section__title" style="font-size: var(--text-h3);">Estudios</h2>
+          <p><strong>Comunicación Gráfica Publicitaria</strong></p>
+          <p>Universidad de Medellín (2023 - 2027)</p>
+        </div>
+
+        <!-- Columna de Software -->
+        <div class="skills">
+          <h2 class="section__title" style="font-size: var(--text-h3);">Software</h2>
+          <div class="software-icons">
+            <!-- Nota: Cambia el "src" por el nombre exacto con el que guardaste cada icono en tu carpeta -->
+            <img src="./landing-page-imagenes/icono-ai.png" alt="Adobe Illustrator" class="software-icon" title="Illustrator">
+            <img src="./landing-page-imagenes/icono-ps.png" alt="Adobe Photoshop" class="software-icon" title="Photoshop">
+            <img src="./landing-page-imagenes/icono-id.png" alt="Adobe InDesign" class="software-icon" title="InDesign">
+            <img src="./landing-page-imagenes/icono-ae.png" alt="Adobe After Effects" class="software-icon" title="After Effects">
+            <img src="./landing-page-imagenes/icono-blender.png" alt="Blender" class="software-icon" title="Blender">
+            <img src="./landing-page-imagenes/icono-vscode.png" alt="Visual Studio Code" class="software-icon" title="VS Code">
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <section class="section container" id="sobre-mi" aria-labelledby="about-title">
+  <div class="about">
+    <h2 class="section__title" id="about-title">Sobre mí</h2>
+    <img src="./landing-page-imagenes/sobre-mi-foto.png" alt="Foto de Magola Creativa" class="about__img">
+
+    <!-- Empieza la nueva caja para agrupar la derecha -->
+    <div class="about__right">
+      <div class="about__body">
+        <p>Llevo cuatro años estudiando Comunicación Gráfica Publicitaria, una carrera que me enamoró porque encontré tres en una: Comunicación, Diseño Gráfico y Publicidad. Para alguien a quien le apasiona casi todo, fue el lugar perfecto.</p>
+        <p>Hace más de tres años trabajo creando marcas desde cero. Me encantan el orden, los cronogramas y los presupuestos, y al mismo tiempo tengo una facilidad natural para lanzar ideas que se salen de lo común. Esa mezcla es lo que hace que mis proyectos sean ordenados por fuera y atrevidos por dentro.</p>
+        <p>Trabajo con cercanía y confianza, pero con total profesionalidad. Mis innegociables son la ética y la honestidad.</p>
+      </div>
+
+      <!-- Los chips ahora viven dentro de esta misma caja derecha -->
+      <ul class="chips" aria-label="Mis fortalezas">
+        <li class="chip chip--mint-soft">Estrategia</li>
+        <li class="chip chip--sky">Branding</li>
+        <li class="chip chip--lilac">Frontend HTML/CSS</li>
+        <li class="chip chip--pink">Copywriting</li>
+      </ul>
+    </div>
+    <!-- Termina la nueva caja -->
+
+  </div>
+</section>
+
+    <!-- ============================================================
+         SERVICES
+         ============================================================ -->
+    <section class="section container" id="servicios" aria-labelledby="services-title">
+      <h2 class="section__title" id="services-title">Servicios</h2>
+      <p class="section__intro">Lo que necesita una marca nueva para arrancar bien, sin importar qué tan pequeño sea el presupuesto.</p>
+
+      <div class="services">
+        <article class="service service--sky">
+          <h3 class="service__title">Naming y estrategia</h3>
+          <p>Un nombre con sentido y una base clara: propósito, valores y tono de comunicación, con cronograma y presupuesto desde el primer día.</p>
+        </article>
+
+        <article class="service service--lilac">
+          <h3 class="service__title">Identidad visual y branding</h3>
+          <p>Logo, paleta, tipografía y piezas gráficas que cuentan quién eres, hechas desde cero y sin una pizca de plagio.</p>
+        </article>
+
+        <article class="service service--mint-vivid">
+          <h3 class="service__title">Diseño web</h3>
+          <p>Páginas limpias, rápidas y fáciles de usar, construidas con HTML y CSS para que tu marca se vea bien en cualquier pantalla.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         PORTFOLIO (behind the scenes)
+         ============================================================ -->
+    <section class="section container" id="portafolio" aria-labelledby="portfolio-title">
+      <h2 class="section__title" id="portfolio-title">Portafolio</h2>
+      <p class="section__intro">Algunos proyectos para conocer cómo pienso, planeo y construyo.</p>
+
+     
+
+      <div class="portfolio-grid">
+        <a href="socialmedia.html" class="case-link" style="text-decoration: none; color: inherit;">
+          <article class="case case--pink"> 
+            <h3 class="case__title">Redes Sociales</h3>
+            <p class="case__type">Piezas gráficas, creación de contenido y parrillas mensuales para RRSS de diferentes marcas</p>
+            <p class="case__text">Aquí puedes ver algunos trabajos que he hecho para empresas que han confiado en Magola Creativa para la ideación y creación de su contenido en redes sociales.</p>
+          </article>
+        </a>
+
+        <article class="case case--lilac">
+          <h3 class="case__title">Branding</h3>
+          <p class="case__type">Creación de marca e identidad visual</p>
+          <p class="case__text">Me apasiona ayudar a pequeñas empresas y emprendimientos a crear su marca, desde el naming, el propósito y valores hasta su identidad visual completa.</p>
+        </article>
+
+        <article class="case case--sky">
+          <h3 class="case__title">UX/UI</h3>
+          <p class="case__type">Creación de páginas web</p>
+          <p class="case__text">Creación de interfaces digitales funcionales y centradas en el usuario. Desarrollo frontend responsivo utilizando HTML, CSS y JavaScript, junto con implementación y autogestión en WordPress.</p>
+        </article>
+
+        <article class="case case--mint-soft">
+          <h3 class="case__title">Campañas y Estrategias para marcas</h3>
+          <p class="case__type">Estrategia, naming y planeación espacial</p>
+          <p class="case__text">Te acompaño en la creación de la estrategia central y la planificación del espacio donde interactuarán tus clientes. Diseñamos entornos donde la estética y la funcionalidad conviven, garantizando que cada elemento cuente la misma historia.</p>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER (contact)
+       ============================================================ -->
+  <footer class="site-footer" id="contacto">
+    <div class="site-footer__inner container">
+      
+      <!-- Columna 1: Contacto -->
+      <div class="footer-col">
+        <h3>Contacto</h3>
+        <p><strong>Correo:</strong><br>
+        <a href="mailto:magolacreativa@gmail.com">magolacreativa@gmail.com</a></p>
+      </div>
+
+      <!-- Columna 2: Horarios -->
+      <div class="footer-col">
+        <h3>Horarios de atención</h3>
+        <p>Lunes a Viernes<br>8:00am - 6:00pm</p>
+      </div>
+
+      <!-- Columna 3: Redes y Botones -->
+      <div class="footer-col">
+        <h3>Redes sociales</h3>
+        <div class="footer-socials">
+          <a href="https://api.whatsapp.com/send?phone=+573052670225&text=Hola!%20Vi%20tu%20portafolio%20y%20quisiera%20trabajar%20contigo%20%F0%9F%98%8A" target="_blank" rel="noopener noreferrer" class="button button--small">WhatsApp</a>
+          <a href="https://www.instagram.com/magolacreativa/" target="_blank" rel="noopener noreferrer" class="button button--small">Instagram</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Copyright -->
+    <div class="site-footer__bottom">
+      <p>&copy; 2026 Magola Creativa</p>
+    </div>
+  </footer>
+
+</body>
+</html>

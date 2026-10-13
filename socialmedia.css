@@ -1,0 +1,174 @@
+/* ==========================================================================
+   ESTILOS ESPECÍFICOS PARA LA PÁGINA SOCIAL MEDIA
+   ========================================================================== */
+
+/* Encabezado principal de la página */
+.header-social {
+  padding-block: var(--space-xl) var(--space-md);
+  text-align: center;
+}
+
+.header-social .section__intro {
+  margin-inline: auto; /* Centra el párrafo debajo del título */
+}
+
+/* Estructura base de cada proyecto */
+.project {
+  margin-bottom: var(--space-xl);
+}
+
+.project__inner {
+  padding: var(--space-lg);
+  border-radius: var(--radius-card);
+}
+
+/* Fondos distintos para separar visualmente cada proyecto */
+.project--floreser .project__inner {
+  background-color: aliceblue;
+}
+
+.project--parrilla .project__inner {
+  background-color: aliceblue;
+}
+
+/* Información del proyecto (Título y descripción) */
+.project__info {
+  max-width: 48rem;
+  margin-bottom: var(--space-lg);
+}
+
+.project__title {
+  font-size: var(--text-h2);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: var(--space-xs);
+}
+
+.project__desc {
+  font-size: var(--text-lg);
+  color: var(--color-text-soft);
+  margin-bottom: var(--space-sm);
+}
+
+/* Galería de imágenes (Grilla automática) */
+.project__gallery {
+  display: grid;
+  gap: var(--space-md);
+  /* Esto crea columnas automáticamente dependiendo del ancho de la pantalla */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  align-items: start;
+}
+
+.gallery__img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: var(--radius-soft);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Sombra suave para que destaquen del fondo */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto hover suave para las imágenes de los mockups */
+.gallery__img:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.site-footer {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-sm);
+  background-color: #EFCCEA; 
+  border-top: 1px solid var(--color-line);
+}
+
+.site-footer__inner {
+  display: grid;
+  gap: var(--space-lg);
+  text-align: center; /* Todo centrado por defecto en celulares */
+}
+
+.footer-col h3 {
+  font-size: var(--text-base);
+  font-weight: 700;
+  margin-bottom: var(--space-xs);
+}
+
+.footer-col p {
+  color: var(--color-text-soft);
+  font-size: var(--text-small);
+  line-height: 1.5;
+}
+
+.footer-col a {
+  color: var(--color-text-soft);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-col a:hover {
+  color: var(--color-text);
+}
+
+/* Botones del footer */
+.footer-socials {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.button--small {
+  padding: 0.4rem 1.2rem;
+  font-size: var(--text-small);
+  background-color: #D1EFBD;
+  color: var(--color-bg);
+  border-radius: var(--radius-pill);
+  width: fit-content;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.button--small:hover {
+  background-color: #89D385;
+  color: #FFFFFF;
+}
+
+.site-footer__bottom {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(0,0,0,0.05);
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--color-text-soft);
+}
+
+/* ==========================================================================
+   11. LARGER SCREENS (Ajustes para PC del footer y estudios)
+   ========================================================================== */
+@media (min-width: 48rem) {
+  /* Estudios a 2 columnas */
+  .studies-skills {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+  }
+
+  /* Footer a 3 columnas estilo referencia */
+  .site-footer__inner {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ==========================================================================
+   MEDIAS QUERIES (Pantallas grandes)
+   ========================================================================== */
+@media (min-width: 64rem) {
+  .project__inner {
+    padding: var(--space-xl); /* Más aire en pantallas grandes */
+  }
+  
+  .project__gallery {
+    gap: var(--space-lg);
+  }
+}
